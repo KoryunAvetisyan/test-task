@@ -1,0 +1,29 @@
+.fog {
+    transform: translateX(100%);
+    animation: fogAnimation 1.5s forwards;
+    transition: transform 1.5s ease-out;
+  }
+  
+.man {
+    transform: translateY(100%);
+    animation: manAnimation 1.5s forwards;
+    transition: transform 1.5s ease-out;
+}
+
+@keyframes fogAnimation {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes manAnimation {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

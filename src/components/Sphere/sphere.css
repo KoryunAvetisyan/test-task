@@ -1,0 +1,25 @@
+.hovered {
+    border: 2px solid #D7D7D7;
+    background: linear-gradient(to right, #868f96 0%, #596164 100%);
+}
+
+.hovered-text {
+    border-bottom: 3px solid #41B663;
+}
+
+.rounded-lg {
+  transition: all 0.3s ease-in-out;
+}
+
+.rounded-lg.hovered {
+  transform: scale(1.05);
+}
+
+ul {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.rounded-lg.hovered ul {
+  opacity: 1;
+}

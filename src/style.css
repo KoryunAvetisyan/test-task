@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #070C10;
+  color: #FFF;
+  overflow-x: hidden;
+}
+
+.green-text {
+  color: #41B663;
+}
+
+.gray-bg {
+  background-color: #1B1F22;
+}
+
+::placeholder {
+  font-size: 18px;
+  color: #FFF !important;
+}
