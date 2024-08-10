@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 import { navigation } from './constants'
 
 const isMenuOpen = ref(false)
+const emit = defineEmits(['scrollToForm'])
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+}
+
+const scrollToForm = () => {
+  emit('scrollToForm')
 }
 
 </script>
@@ -34,7 +39,7 @@ const toggleMenu = () => {
                     <img src="../../assets/search-icon.png" alt="search">
                 </div>
                 <div>
-                    <button class="bg-white p-2 rounded-l-lg rounded-b-lg rounded-tr-none button-shadow text-black">Կապ մեզ հետ</button>
+                    <button @click="scrollToForm" class="bg-white p-2 rounded-l-lg rounded-b-lg rounded-tr-none button-shadow text-black">Կապ մեզ հետ</button>
                 </div>
             </div>
         </div>

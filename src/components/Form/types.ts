@@ -2,7 +2,8 @@ import { IFormData } from '../../globalTypes'
 
 type IFormError = {
     message: string,
-    isError: boolean
+    isError: boolean,
+    isInputFocus: boolean
 }
 
 type IFormErrors<T> = {

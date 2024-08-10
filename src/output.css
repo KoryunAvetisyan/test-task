@@ -642,6 +642,10 @@ video {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -921,6 +925,14 @@ body {
 ::placeholder {
   font-size: 18px;
   color: #FFF !important;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
 }
 
 @media (min-width: 1px) {

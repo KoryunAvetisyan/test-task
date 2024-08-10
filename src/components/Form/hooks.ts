@@ -1,4 +1,4 @@
-import { reactive, watch } from 'vue'
+import { reactive, watch, ref } from 'vue'
 import { IFormData, formDataKeys } from '../../globalTypes'
 import { IErrors } from './types'
 
@@ -13,28 +13,39 @@ const fields = () => {
     const errors = reactive<IErrors>({
         name: {
             message: '',
-            isError: false
+            isError: false,
+            isInputFocus: false
         },
         company: {
             message: '',
-            isError: false
+            isError: false,
+            isInputFocus: false
         },
         mail: {
             message: '',
-            isError: false
+            isError: false,
+            isInputFocus: false
         },
         phone: {
             message: '',
-            isError: false
+            isError: false,
+            isInputFocus: false
         },
         message: {
             message: '',
-            isError: false
+            isError: false,
+            isInputFocus: false
         },
     })
+    const disabled = ref(true)
+
+    const focusFn = (key:formDataKeys, val:boolean) => {
+        errors[key].isInputFocus = val
+    }
+
 
     
-    watch(formData, () => {
+    watch([formData, errors], () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         for(const key in formData) {
             const objKeys:formDataKeys = key as formDataKeys
@@ -47,7 +58,7 @@ const fields = () => {
                     errors[objKeys].isError = false
                 }
             } else {
-               if (!formData[objKeys]) {
+               if(!formData[objKeys]) {
                     errors[objKeys].message = `${objKeys} is required!`
                     errors[objKeys].isError = true
                } else {
@@ -56,12 +67,17 @@ const fields = () => {
                }
             }
         }
+        const isDisabled = Object.values(errors).some(item => item.isError) || Object.values(errors).some(item => !item.isInputFocus)
+        disabled.value = isDisabled
+
     }, {deep: true, immediate: false})
 
 
     return {
         formData,
-        errors
+        errors,
+        focusFn,
+        disabled
     }
 }
 
